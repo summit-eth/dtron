@@ -119,7 +119,7 @@
 		<div class="sub" v-if="user.total_invested > 0">
 			<h6>Your Referral Link</h6>
 			<h5>{{ location.origin }}/?ref={{ tron.account }}</h5>
-			<button class="copytext" @click="copyText(top.location.href + '/?ref=' + tron.account)">COPY</button>
+			<button class="copytext" @click="copyText(location.origin + '/?ref=' + tron.account)">COPY</button>
 		</div>
 		<div class="sub" v-if="user.total_invested == 0">
 			<h6>Invest once to get your referral link!</h6>
