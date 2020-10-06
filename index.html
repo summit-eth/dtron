@@ -35,12 +35,6 @@
 	</div>
 	
 	<div id="c_invest" class="container" v-if="user.total_invested > 0">
-		<!--div class="sub">
-			<h1>Invest</h1>
-			<input type="range" min="50" max="5000" value="100" step="100" id="trx_slider" v-model.number="calc.amount" @change="calc.amount = calc.amount < 50 ? 50 : calc.amount">
-			<input type="number" min="50" placeholder="100 trx" value="100" id="trx_value" v-model.number="calc.amount" @change="calc.amount = calc.amount < 50 ? 50 : calc.amount">
-			<button id="btn_invest" @click.prevent="deposit(calc.tarif, calc.amount)">INVEST</button>
-		</div-->
 		<div class="sub">
 			<h1>Dashboad</h1>
 			<h5>Total Invested:</h5><h6 id="total_invest">{{ user.total_invested }}</h6>
@@ -60,7 +54,7 @@
 	<div class="container">
 		<div class="sub" v-if="user.total_invested == 0">
 			<h6>No backdoors, no cheating, fully decentralized!</h6>
-			<button id="view_contract" @click="window.open('https://tronscan.org/#/contract/TSLaYWjzXTNaQcPE1j6tagF6vqtStNtz1x')">VERIFIED SMART CONTRACT &nbsp;&nbsp;[&#x2197;]</button>
+			<button id="view_contract" @click="window.open('https://tronscan.org/#/contract/TVSxU3pv42ihQhUfnC3fyEwiFgUSL5FcZo/code')">VERIFIED SMART CONTRACT &nbsp;&nbsp;[&#x2197;]</button>
 		</div>
 		<div class="sub" v-if="contract.launch_date > current_date">
 			<h1>Pre-launch Referral Bonuses!</h1>
@@ -74,18 +68,27 @@
 		</div>
 		<div class="sub" v-if="user.total_invested == 0 && contract.launch_date <= current_date"><h4>Contract running for {{ countdown(new Date(contract.launch_date * 1000)).toString() }}</h4></div>
 		<div class="sub">
-			<h1>Invest<span v-if="user.total_invested != 0" bold>ment Choices</span><span v-if="user.total_invested == 0" bold>ment Opportunities</span></h1>
+			<h1>Invest<span v-if="user.total_invested != 0" bold> Now</span><span v-if="user.total_invested == 0" bold>ment Opportunities</span></h1>
 			<h4>You can invest up to 100 times!</h4>
-			<table>
-				<thead><th>Daily ROI</th><th>Active Days</th><th>Total ROI</th><th>Amount</th><th>&nbsp;</th></thead>
-				<tr><td>20%</td><td>6</td><td>120%</td><td bold> 200 trx</td><td><button @click.prevent="deposit(0, 200)">Invest</button></td></tr>
-				<tr><td>24%</td><td>6</td><td>144%</td><td bold> 500 trx</td><td><button @click.prevent="deposit(1, 500)">Invest</button></td></tr>
-				<tr><td>30%</td><td>5</td><td>150%</td><td bold> 1000 trx</td><td><button @click.prevent="deposit(2, 1000)">Invest</button></td></tr>
-				<tr><td>40%</td><td>4</td><td>160%</td><td bold> 2500 trx</td><td><button @click.prevent="deposit(3, 2500)">Invest</button></td></tr>
-				<tr><td>50%</td><td>4</td><td>200%</td><td bold> 5000 trx</td><td><button @click.prevent="deposit(4, 5000)">Invest</button></td></tr>
-				<tr><td>60%</td><td>4</td><td>240%</td><td bold> 8000 trx</td><td><button @click.prevent="deposit(5, 8000)">Invest</button></td></tr>
-				<tr><td>80%</td><td>3</td><td>240%</td><td bold> 10000 trx</td><td><button @click.prevent="deposit(6, 10000)">Invest</button></td></tr>
-			</table>
+			<div class="sub">
+				<h4>15% Daily ROI for 30 days.</h4>
+				<input type="range" min="50" max="50000" value="50" step="50" id="trx_slider" v-model.number="calc.amount" @change="calc.amount = calc.amount < 50 ? 50 : calc.amount">
+				<input type="number" min="50" placeholder="50 trx" value="50" id="trx_value" v-model.number="calc.amount" @change="calc.amount = calc.amount < 50 ? 50 : calc.amount">
+				<button id="btn_invest" @click.prevent="deposit(0, calc.amount)">INVEST</button>
+			</div>
+			<div class="sub" v-if="contract.launch_date > current_date">
+				<h4 style="background: #fcc; color: #000; border-radius: 4px; padding: 2px 8px; margin-bottom: 16px">Pre-launch Quick Investments</h4>
+				<table>
+					<thead><th>Daily ROI</th><th>Active Days</th><th>Total ROI</th><th>Amount</th><th>&nbsp;</th></thead>
+					<!--tr><td>15%</td><td>30</td><td>450%</td><td bold> 200 trx</td><td><button @click.prevent="deposit(0, 200)">Invest</button></td></tr-->
+					<tr><td>24%</td><td>6</td><td>144%</td><td bold> 500 trx</td><td><button @click.prevent="deposit(1, 500)">Invest</button></td></tr>
+					<tr><td>30%</td><td>5</td><td>150%</td><td bold> 1000 trx</td><td><button @click.prevent="deposit(2, 1000)">Invest</button></td></tr>
+					<tr><td>40%</td><td>4</td><td>160%</td><td bold> 2500 trx</td><td><button @click.prevent="deposit(3, 2500)">Invest</button></td></tr>
+					<tr><td>50%</td><td>4</td><td>200%</td><td bold> 5000 trx</td><td><button @click.prevent="deposit(4, 5000)">Invest</button></td></tr>
+					<tr><td>60%</td><td>4</td><td>240%</td><td bold> 8000 trx</td><td><button @click.prevent="deposit(5, 8000)">Invest</button></td></tr>
+					<tr><td>80%</td><td>3</td><td>240%</td><td bold> 10000 trx</td><td><button @click.prevent="deposit(6, 10000)">Invest</button></td></tr>
+				</table>
+			</div>
 		</div>
 		<div class="sub" v-if="user.total_invested > 0 && tronWeb != undefined">
 			<h1>Investment Data</h1>
@@ -101,7 +104,7 @@
 	<div id="c_data" class="container">
 		<div class="sub" v-if="contract.launch_date <= current_date">
 			<h1>Referral<span v-if="user.total_invested > 0" bold>s</span><span v-if="user.total_invested == 0" bold> Opportunities</span></h1>
-			<h4>Referral bonus is automatically added to your account when they invest.</h4>
+			<h4>Referral bonus is automatically added to your dtron account when they invest.</h4>
 			<table>
 				<thead><th>Level</th><th>Referral Bonus</th><th v-if="user.total_invested > 0">Referrals</th></thead>
 				<tr><td>1</td><td><span v-if="contract.launch_date > current_date" highlight>Prelaunch 15% + 5%! &#128293;</span><span v-else>15%</span></td><td v-if="user.total_invested > 0" id="ref_lv1">{{ user.structure[0] }}</td></tr>
@@ -127,7 +130,7 @@
 		<div class="sub">
 			<h6>Questions?</h6>
 			<button id="view_telegram">JOIN OUR TELEGRAM GROUP &nbsp;&nbsp;[&#x2197;]</button>
-			<button id="view_contract" @click="window.open('https://tronscan.org/#/contract/TSLaYWjzXTNaQcPE1j6tagF6vqtStNtz1x')" v-if="user.total_invested > 0">VERIFIED SMART CONTRACT &nbsp;&nbsp;[&#x2197;]</button>
+			<button id="view_contract" @click="window.open('https://tronscan.org/#/contract/TVSxU3pv42ihQhUfnC3fyEwiFgUSL5FcZo/code')" v-if="user.total_invested > 0">VERIFIED SMART CONTRACT &nbsp;&nbsp;[&#x2197;]</button>
 		</div>
 	</div>
 	

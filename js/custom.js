@@ -92,7 +92,21 @@ $(function() {
 			},
 			{
 				"name": "deposits",
-				"type": "uint256[100][3]"
+				"type": "uint256[4][100]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "_self",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
 			}
 		],
 		"payable": false,
@@ -149,20 +163,6 @@ $(function() {
 			{
 				"name": "",
 				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "owner",
-		"outputs": [
-			{
-				"name": "",
-				"type": "address"
 			}
 		],
 		"payable": false,
@@ -337,28 +337,6 @@ $(function() {
 		"type": "function"
 	},
 	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "ref1",
-				"type": "uint8"
-			},
-			{
-				"name": "ref2",
-				"type": "uint8"
-			},
-			{
-				"name": "ref3",
-				"type": "uint8"
-			}
-		],
-		"name": "_setRef",
-		"outputs": [],
-		"payable": true,
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
 		"inputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -494,15 +472,15 @@ $(function() {
   		mixins: [VueTRON],
 		el: '#App',
 		data: {
-            default_upline: 'TJFh8yMdcZBwfH6tcyDuLe8jxebSAXb1ZU', // TKxumm6pmZiXSqRkr4ggrwdGwbPi6r2VW2 - Zero address
-            upline: 'TJFh8yMdcZBwfH6tcyDuLe8jxebSAXb1ZU', // TKxumm6pmZiXSqRkr4ggrwdGwbPi6r2VW2 - Zero address
-            contract_address: 'TWwKPFCDnJUWVLG6x9njYiiRYHMD7HbWau', // TTzv1Vpnvpqu6wCqzUFZpSVnBrunEiSeGA
+            default_upline: 'TRuAr8z9eCNXSxzcJKAFo9z4zJd2SS76EG', // TKxumm6pmZiXSqRkr4ggrwdGwbPi6r2VW2 - Zero address
+            upline: 'TRuAr8z9eCNXSxzcJKAFo9z4zJd2SS76EG', // TKxumm6pmZiXSqRkr4ggrwdGwbPi6r2VW2 - Zero address
+            contract_address: 'TVSxU3pv42ihQhUfnC3fyEwiFgUSL5FcZo', // TTzv1Vpnvpqu6wCqzUFZpSVnBrunEiSeGA
             contract: {
                 invested: 0,
                 withdraw: 0,
                 direct_bonus: 0,
                 match_bonus: 0,
-				launch_date: 1602115200
+				launch_date: 1602201600
             },
 			current_date: new Date().getTime()/1e3,
             user: {
@@ -515,13 +493,13 @@ $(function() {
 				deposits: [[0,0,0,0]]
             },
             tarifs: [
-            	{days: 5, percent: 125},
+            	{days: 30, percent: 450},
+            	{days: 6, percent: 144},
             	{days: 5, percent: 150},
-            	{days: 5, percent: 175},
+            	{days: 4, percent: 160},
             	{days: 4, percent: 200},
-            	{days: 5, percent: 250},
-            	{days: 7, percent: 350},
-            	{days: 10, percent: 1000}
+            	{days: 4, percent: 240},
+            	{days: 3, percent: 240}
             ],
             calc: {
             	tarif: 0,
@@ -628,8 +606,8 @@ $(function() {
                 });
             },
             getEventsList() {
-            	//fetch('https://api.trongrid.io/v1/contracts/' + this.contract_address + '/events?event_name=&only_confirmed=true&order_by=block_timestamp%2Cdesc').then(r => r.json()).then(res => {
-            	fetch('https://api.shasta.trongrid.io/v1/contracts/' + this.contract_address + '/events?event_name=&only_confirmed=true&order_by=block_timestamp%2Cdesc').then(r => r.json()).then(res => {
+            	fetch('https://api.trongrid.io/v1/contracts/' + this.contract_address + '/events?event_name=&only_confirmed=true&order_by=block_timestamp%2Cdesc').then(r => r.json()).then(res => {
+            	//fetch('https://api.shasta.trongrid.io/v1/contracts/' + this.contract_address + '/events?event_name=&only_confirmed=true&order_by=block_timestamp%2Cdesc').then(r => r.json()).then(res => {
             	//fetch('https://testapi.tronex.io/events/' + this.contract_address + '').then(r => r.json()).then(res => {
 					if(res.data) {
 						res.data.forEach(v => {
