@@ -40,6 +40,8 @@ h6 {
 
 body {
 	background: linear-gradient(-140deg, #0a003d, #250a6a);
+	background: rgb(10,0,61);
+	background: linear-gradient(168deg, rgba(10,0,61,1) 0%, rgba(21,5,79,1) 61%, rgba(150,3,104,1) 61%, rgba(150,3,104,1) 66%, rgba(22,5,81,1) 66%, rgba(23,5,83,1) 69%, rgba(14,217,114,1) 69%, rgba(14,217,114,1) 76%, rgba(24,5,84,1) 76%, rgba(37,10,106,1) 100%);
 	background-attachment: fixed;
 	background-size: 100% 100%;
 }

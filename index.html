@@ -101,7 +101,7 @@
 	<div id="c_data" class="container">
 		<div class="sub" v-if="contract.launch_date <= current_date">
 			<h1>Referral<span v-if="user.total_invested > 0" bold>s</span><span v-if="user.total_invested == 0" bold> Opportunities</span></h1>
-			<h4>When they invest, the referral bonus is automatically added to your account!</h4>
+			<h4>Referral bonus is automatically added to your account when they invest.</h4>
 			<table>
 				<thead><th>Level</th><th>Referral Bonus</th><th v-if="user.total_invested > 0">Referrals</th></thead>
 				<tr><td>1</td><td><span v-if="contract.launch_date > current_date" highlight>Prelaunch 15% + 5%! &#128293;</span><span v-else>15%</span></td><td v-if="user.total_invested > 0" id="ref_lv1">{{ user.structure[0] }}</td></tr>
@@ -138,7 +138,7 @@
 		</div>
 	</div>
 
-	<div class="container" style="Box-shadow: none; border: none; background: none; color: #dbf">
+	<div class="container" style="Box-shadow: none; border: none; background: none; color: #fff">
 		&copy; dtron.cc
 	</div>
 	
