@@ -472,8 +472,8 @@ $(function() {
   		mixins: [VueTRON],
 		el: '#App',
 		data: {
-            default_upline: 'TRuAr8z9eCNXSxzcJKAFo9z4zJd2SS76EG', // TKxumm6pmZiXSqRkr4ggrwdGwbPi6r2VW2 - Zero address
-            upline: 'TRuAr8z9eCNXSxzcJKAFo9z4zJd2SS76EG', // TKxumm6pmZiXSqRkr4ggrwdGwbPi6r2VW2 - Zero address
+            default_upline: 'TYdLXmU4hGQ7szXe1qvfzHqcwYYNGN4cSf',
+            upline: 'TYdLXmU4hGQ7szXe1qvfzHqcwYYNGN4cSf',
             contract_address: 'TVSxU3pv42ihQhUfnC3fyEwiFgUSL5FcZo', // TTzv1Vpnvpqu6wCqzUFZpSVnBrunEiSeGA
             contract: {
                 invested: 0,

@@ -152,3 +152,58 @@ table, table > *, table > * > * {
 }
 th { height: 30px; background-color: #cccedc}
 td { height: 28px; border: 2px solid #eee; text-align: center; padding: 8px; vertical-align: middle }
+
+
+
+#futures {
+	position: fixed;
+	z-index: 100;
+	top: 32px;
+	right: 0px;
+	width: 172px;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 32px 0 0 32px;
+	box-shadow: 0px 8px 16px -8px rgba(0, 0, 0, 0.5);
+	background: #015348;
+	background: linear-gradient(-140deg, #202824 0%, #117368 50%, #202824 100%);
+	background-repeat: repeat;
+	background-size: 100% 400px;
+	animation-duration: 2s;
+	animation-name: shine;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+@keyframes shine {
+	from {
+		background-position: 0px 0px;
+	}
+	
+	to {
+		background-position: 0px -100px;
+	}
+}
+
+#futures a,
+#futures a:visited {
+	color: white !important;
+	text-decoration: none;
+	font-weight: 700;
+	display: inline-block;
+	height: 40px;
+	width: 172px;
+	line-height: 40px;
+	padding-left: 16px;
+}
+
+#futures img {
+	max-width: 24px;
+	position: absolute;
+	right: 8px;
+	top: 8px;
+}
+
+#futures:hover {
+	opacity: .7;
+}

@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="fonts/import.css">
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/jqueryui.css">
-<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet" href="css/custom.css?q=t">
 <link rel="stylesheet" href="css/custom-slider.css">
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.ui.js"></script>
@@ -23,6 +23,11 @@
 </head>
 <body>
 <div class="b-app" id="App" v-cloak>
+
+	<div v-if="contract.launch_date < current_date + 600" id="futures">
+		<a href="https://dtron-futures.cc/" target="_blank">dtron-futures.cc</a>
+		<img src="img/stock.png">
+	</div>
 
 	<div id="c_hero" class="container" style="background: none !important; border: none !important">
 		<img src="img/logo.png">
@@ -148,6 +153,6 @@
 </div>
 
 <script src="js/vue.js"></script>
-<script src="js/custom.js"></script>
+<script src="js/custom.js?q=31"></script>
 </body>
 </html>
