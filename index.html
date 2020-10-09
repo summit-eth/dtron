@@ -35,7 +35,7 @@
 
 	<div class="container" v-if="contract.launch_date > current_date">
 		<div class="sub">
-			<h1 style="text-align: center">Launching in {{ countdown(new Date(contract.launch_date * 1000)).toString() }}!</h1>
+			<h1 style="text-align: center">Contract was depleted! Relaunching in {{ countdown(new Date(contract.launch_date * 1000)).toString() }}!</h1>
 		</div>
 	</div>
 	
