@@ -35,7 +35,7 @@
 
 	<div class="container" v-if="contract.launch_date > current_date">
 		<div class="sub">
-			<h1 style="text-align: center">Contract was depleted! Relaunching in {{ countdown(new Date(contract.launch_date * 1000)).toString() }}!</h1>
+			<h1 style="text-align: center">Launching in {{ countdown(new Date(contract.launch_date * 1000)).toString() }}!</h1>
 		</div>
 	</div>
 	
@@ -134,7 +134,7 @@
 	<div class="container">
 		<div class="sub">
 			<h6>Questions?</h6>
-			<button id="view_telegram" @click="window.open('https://t.me/joinchat/Tog0whq3fzl9gJ6GpPSxuQ')">JOIN OUR TELEGRAM GROUP &nbsp;&nbsp;[&#x2197;]</button>
+			<button id="view_telegram" @click="window.open('https://t.me/dtronofficial')">JOIN OUR TELEGRAM GROUP &nbsp;&nbsp;[&#x2197;]</button>
 			<button id="view_contract" @click="window.open('https://tronscan.org/#/contract/TVSxU3pv42ihQhUfnC3fyEwiFgUSL5FcZo/code')" v-if="user.total_invested > 0">VERIFIED SMART CONTRACT &nbsp;&nbsp;[&#x2197;]</button>
 		</div>
 	</div>
