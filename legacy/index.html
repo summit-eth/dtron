@@ -37,11 +37,11 @@
 		<img src="img/logo.png">
 	</div>
 
-	<div class="container" v-if="contract.launch_date > current_date">
+	<!--div class="container" v-if="contract.launch_date > current_date">
 		<div class="sub">
 			<h1 style="text-align: center">Launching in {{ countdown(new Date(contract.launch_date * 1000)).toString() }}!</h1>
 		</div>
-	</div>
+	</div-->
 	
 	<div id="c_invest" class="container" v-if="user.total_invested > 0">
 		<div class="sub">
@@ -49,9 +49,6 @@
 			<h5>Total Invested:</h5><h6 id="total_invest">{{ user.total_invested }}</h6>
 			<h5>Referral Bonus:</h5><h6 id="total_refer">{{ user.total_match_bonus }}</h6>
 			<h5 v-if="contract.launch_date < current_date">Withdrawn TRX:</h5><h6 id="total_refer" v-if="contract.launch_date < current_date">{{ user.total_withdrawn }}</h6>
-		</div>
-		<div class="sub" v-if="contract.launch_date > current_date">
-			<h4>You can withdraw your earnings after launch.</h4>
 		</div>
 		<div class="sub">
 			<h5>Realtime Withdrawable</h5>
@@ -143,9 +140,9 @@
 		</div>
 	</div>
 	
-	<div class="container" v-if="contract.launch_date < current_date">
+	<div class="container">
 		<div class="sub">
-			<h4 style="text-align: center">Contract running for {{ countdown(new Date(contract.launch_date * 1000)).toString() }}!</h4>
+			<h4 style="text-align: center">Contract running for {{ countdown(new Date(1602201600000)).toString() }}!</h4>
 			
 		</div>
 	</div>
