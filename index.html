@@ -1,6 +1,15 @@
 <!doctype html>
 <html lang="en-us">
 <head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V22HEPHXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4V22HEPHXM');
+</script>
 <link rel="icon" href="favicon.ico">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -31,34 +40,52 @@
 	<div class="container" v-if="contract.launch_date > current_date">
 		<div class="sub">
 			<h1 style="text-align: center">DTRON IS RELAUNCHING!</h1>
-			<h2>{{ countdown(new Date(1610755200000)).toString() }}!</h2>
+			<h5 style="text-align: center">{{ countdown(new Date(1610755200000)).toString() }}!</h5>
 		</div>
 	</div>
 	
 	<div id="c_data" class="container">
-		<div class="sub" v-if="upline != default_upline">
-			<h6>Referred by</h6>
-			<h5>{{ upline }}</h5>
+		<div class="sub">
+			<h1>Contract Conditions:</h1>
+			<h6>The Total ROI</h6>
+			<h5>Users will be able to get 240%(<u>deposit included</u>) of their total investment.</h5>
+			<h5>The contract will provide users 10% of their total investment <u>once</u> per day for 24 days or when the total <u>240% profit is reached</u>, whichever comes first.</h5>
+			<br>
+			<h6>How?</h6>
+			<h5>Users can get the 240% by waiting for the 10% Daily ROI or by referral commissions.</h5>
+			<br>
+			<h6>Referral Commissions</h6>
+			<h5>Referral commissions are 8 levels deep:</h5>
+			<h5>10% - 5% - 3% - 2% - 2% - 1% - 1% - 1%</h5>
+			<br>
+			<h6>Growth &amp; Profits</h6>
+			<h5>Once users get 240% of their investments, they shall need to invest again to earn more profit.</h5>
+			<br>
+			<h6>Insurance Fund</h6>
+			<h5>Excess profits shall go to the DTRON Insurance Fund Contract &ndash; to be used for refunds in the immediate future.</h5>
 		</div>
 		<div class="sub">
+			<h6>Get your teams ready!</h6>
+			<h5>The DTRON Team is working 24/7 in creating the new dApp program code.</h5>
+			<br v-if="upline != default_upline">
+			<h6 v-if="upline != default_upline">Referred by</h6>
+			<h5 v-if="upline != default_upline">{{ upline }}</h5>
+			<br>
 			<h6>Your Referral Link</h6>
 			<h5>{{ location.origin }}/?ref={{ tron.account }}</h5>
 			<button class="copytext" @click="copyText(location.origin + '/?ref=' + tron.account)">COPY</button>
-		</div>
-		<div class="sub" v-if="user.total_invested == 0">
-			<h6>Get your teams ready!</h6>
 		</div>
 	</div>
 
 	<div class="container">
 		<div class="sub">
-			<h6>Questions?</h6>
+			<h6>More Information:</h6>
 			<button id="view_telegram" @click="window.open('https://t.me/dtronofficial')">JOIN OUR TELEGRAM GROUP &nbsp;&nbsp;[&#x2197;]</button>
 			<button id="view_contract" @click="window.open('https://dtron.cc/legacy')" v-if="user.total_invested > 0">OUR OLD WEBSITE</button>
 		</div>
 	</div>
 
-	<div class="container" style="Box-shadow: none; border: none; background: none; color: #fff">
+	<div class="container" style="Box-shadow: none; border: none; background: none; color: #fff; text-align: right">
 		&copy; dtron.cc 2021
 	</div>
 	
