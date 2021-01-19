@@ -1,7 +1,3 @@
-/*
- #2c135f
- #ffc322
-*/
 
 [monospace] {
 	font-family: monospace !important;
@@ -16,7 +12,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-	color: #0b0f1b;
+	color: #4c4aff;
 	font-size: 24px;
 	font-weight: 700;
 }
@@ -28,20 +24,19 @@ h4 {
 }
 
 h5 {
-	opacity: .7;
-	font-size: 16px;
+	opacity: .9;
+	font-size: 12px;
 }
 
 h6 {
 	font-size: 20px;
 	font-weight: 700;
-	color: #0b0f1b;
+	color: #4c4aff;
 }
 
 body {
-	background: linear-gradient(-140deg, #0a003d, #250a6a);
-	background: rgb(10,0,61);
-	background: linear-gradient(168deg, rgb(0 10 16) 0%, rgb(0 46 130) 61%, #ffd800 61%, #ffcc13 66%, rgb(1 12 23) 66%, rgb(0 32 83) 69%, #eee 69%, #ddd 76%, rgb(0 17 36) 76%, rgb(0 0 0) 100%);
+	background: #000;
+	background: linear-gradient(168deg, rgb(0 0 0) 0%, rgb(0 28 78) 41%, #ffd800 41%, #ffcc13 52%, rgb(1 12 23) 52%, rgb(0 32 83) 54%, #eee 54%, #ddd 59%, rgb(1 29 62) 59%, rgb(0 0 0) 100%);
 	background-attachment: fixed;
 	background-size: 100% 100%;
 }
@@ -51,21 +46,20 @@ body { padding: 0px 16px 8px 16px; }
 .container:not(:first-child) { 
 	margin-top: 32px;
 }
-.container {
+.container:not(#c_hero) {
 	width: 100%;
 	max-width: 600px;
 	min-width: 260px;
-	border-radius: 7px;
-	box-shadow: 0px 4px 24px -8px rgba(0,0,0,.5);
-	border: 2px solid #fff;
+	border-radius: 0px;
+	box-shadow: 0px 5px 25px -10px #000;
 	padding: 8px;
 	margin: 8px auto;
-	background: #fff;
+	background: #000c;
+	backdrop-filter: blur(25px) saturate(160%) contrast(45%);
 }
 
 	.container .sub {
-		border-radius: 5px;
-		border: 2px solid #dfeaff;
+		border-radius: 0px;
 		padding: 16px;
 	}
 	
@@ -115,7 +109,7 @@ button {
 	padding: 12px 16px;
 	font-size: 16px;
 	font-weight: 700;
-	color: white;
+	color: #000;
 	outline: none;
 	transition: opacity 0.2s;
 }
@@ -153,58 +147,3 @@ table, table > *, table > * > * {
 }
 th { height: 30px; background-color: #cccedc}
 td { height: 28px; border: 2px solid #eee; text-align: center; padding: 8px; vertical-align: middle }
-
-
-
-#futures {
-	position: absolute;
-	z-index: 100;
-	top: 32px;
-	right: 0px;
-	width: 172px;
-	height: 40px;
-	line-height: 40px;
-	border-radius: 32px 0 0 32px;
-	box-shadow: 0px 8px 16px -8px rgba(0, 0, 0, 0.5);
-	background: #015348;
-	background: linear-gradient(-140deg, #202824 0%, #117368 50%, #202824 100%);
-	background-repeat: repeat;
-	background-size: 100% 400px;
-	animation-duration: 2s;
-	animation-name: shine;
-	animation-iteration-count: infinite;
-	animation-direction: alternate;
-}
-
-@keyframes shine {
-	from {
-		background-position: 0px 0px;
-	}
-	
-	to {
-		background-position: 0px -100px;
-	}
-}
-
-#futures a,
-#futures a:visited {
-	color: white !important;
-	text-decoration: none;
-	font-weight: 700;
-	display: inline-block;
-	height: 40px;
-	width: 172px;
-	line-height: 40px;
-	padding-left: 16px;
-}
-
-#futures img {
-	max-width: 24px;
-	position: absolute;
-	right: 8px;
-	top: 8px;
-}
-
-#futures:hover {
-	opacity: .7;
-}
