@@ -40,11 +40,21 @@
 	<div class="container">
 		<div class="sub">
 			<h1 style="text-align: center">DTRON IS RELAUNCHING!</h1>
-			<h5 style="text-align: center">JANUARY 22 @ 8 AM UTC</h5>
-			<h5 style="text-align: center">{{ countdown(new Date(1611302400000)).toString() }}</h5>
+			<h5 style="text-align: center">JANUARY 24 @ 8 AM UTC</h5>
+			<h5 style="text-align: center">{{ countdown(new Date(1611475200000)).toString() }}</h5>
 			<button id="view_telegram" @click="window.open('https://t.me/dtronofficial')">OUR NEW TELEGRAM GROUP &nbsp;&nbsp;[&#x2197;]</button>
 		</div>
 	</div>
+    
+    <div class="container">
+        <div class="sub">
+            <h6>Invest</h6>
+            <h5>50 trx minimum</h5>
+            <input type="number" min="50" placeholder="50 trx" value="50" id="trx_value" v-model.number="calc.amount" @change="calc.amount = calc.amount < 50 ? 50 : calc.amount">
+            <button id="btn_invest" @click.prevent="deposit(calc.amount)">INVEST</button>
+            <h5 style="text-align: center">Please keep 5-10 trx for transaction fees</h5>
+        </div>
+    </div>
 	
 	<div id="c_data" class="container">
 		<div class="sub">
