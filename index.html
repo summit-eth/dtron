@@ -42,11 +42,11 @@
 			<h1 style="text-align: center">DTRON IS RELAUNCHING!</h1>
 			<h5 style="text-align: center">JANUARY 24 @ 8 AM UTC</h5>
 			<h5 style="text-align: center">{{ countdown(new Date(1611475200000)).toString() }}</h5>
-			<button id="view_telegram" @click="window.open('https://t.me/dtronofficial')">OUR NEW TELEGRAM GROUP &nbsp;&nbsp;[&#x2197;]</button>
+			<button id="view_telegram" @click="window.open('https://t.me/dtronofficial')">OFFICIAL TELEGRAM GROUP &nbsp;&nbsp;[&#x2197;]</button>
 		</div>
 	</div>
     
-    <div class="container">
+    <!--div class="container">
         <div class="sub">
             <h6>Invest</h6>
             <h5>50 trx minimum</h5>
@@ -54,7 +54,7 @@
             <button id="btn_invest" @click.prevent="deposit(calc.amount)">INVEST</button>
             <h5 style="text-align: center">Please keep 5-10 trx for transaction fees</h5>
         </div>
-    </div>
+    </div-->
 	
 	<div id="c_data" class="container">
 		<div class="sub">
@@ -111,9 +111,7 @@
 	<div class="container">
 		<div class="sub">
 			<h6>More Information:</h6>
-			<button id="view_telegram" @click="window.open('https://t.me/dtronofficial')">OUR NEW TELEGRAM GROUP &nbsp;&nbsp;[&#x2197;]</button>
-			<button id="view_contract" @click="window.open('https://tronscan.org/#/contract/TVSxU3pv42ihQhUfnC3fyEwiFgUSL5FcZo/code')">OLD SMART CONTRACT &nbsp;&nbsp;[&#x2197;]</button>
-			<button id="view_contract" @click="window.open('https://dtron.cc/legacy')" v-if="user.total_invested > 0">OUR OLD WEBSITE &nbsp;&nbsp;[&#x2197;]</button>
+			<button id="view_telegram" @click="window.open('https://t.me/dtronofficial')">OFFICIAL TELEGRAM GROUP &nbsp;&nbsp;[&#x2197;]</button>
 		</div>
 	</div>
 
