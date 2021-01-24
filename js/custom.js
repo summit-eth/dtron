@@ -565,10 +565,11 @@ $(function() {
             contract_address: 'TLsG6PzMAx9cJ4qm6MPibZPkrnaFooWBQ7',
             contract: {
                 invested: 0,
-                withdraw: 0,
-                direct_bonus: 0,
-                match_bonus: 0,
-				launch_date: 1611475200
+                withdrawn: 0,
+                referrals: 0,
+                insurance: 0,
+				launch_date: 1611475200,
+				starting_date: 1611475200
             },
 			current_date: new Date().getTime()/1e3,
             user: {

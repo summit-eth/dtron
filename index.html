@@ -2,23 +2,23 @@
 <html lang="en-us">
 <head>
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V22HEPHXM"></script>
+<!--script async src="https://www.googletagmanager.com/gtag/js?id=G-4V22HEPHXM"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'G-4V22HEPHXM');
-</script>
+</script-->
 <link rel="icon" href="favicon.ico">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="description" content="Modern & decentralized long-term crowd-funded investment platform powered by the tron blockchain network.">
 <title>dtron.cc</title>
 <link rel="stylesheet" href="fonts/import.css">
-<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/reset.css?q=2021">
 <link rel="stylesheet" href="css/jqueryui.css">
-<link rel="stylesheet" href="css/custom.css?q=tq">
+<link rel="stylesheet" href="css/custom.css?q=2021">
 <link rel="stylesheet" href="css/custom-slider.css">
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.ui.js"></script>
@@ -46,6 +46,12 @@
 			<button id="view_telegram" @click="window.open('https://t.me/dtronofficial')">OFFICIAL TELEGRAM GROUP &nbsp;&nbsp;[&#x2197;]</button>
 		</div>
 	</div>
+	
+	<div class="container">
+		<div class="sub" style="text-align: center">
+			<h2><span style="zoom: 4; float: left; margin-top: -5px; margin-right: -3px">&ldquo;</span>Modern & decentralized long-term crowd-funded investment platform powered by the tron blockchain network.</h2>
+        </div>
+    </div>
 	
 	<div id="c_invest" class="container">
 		<div class="sub">
@@ -104,12 +110,9 @@
     
 	<div class="container">
 		<div class="sub">
-			<h6 v-if="upline != default_upline">Referred by</h6>
-			<h5 v-if="upline != default_upline && user.invested == 0">{{ upline }}</h5>
-			<h5 v-else>{{ user.upline }}</h5>
-			<br>
-			<h6>Your Referral Link</h6>
-			<h5>{{ location.origin }}/?ref={{ tron.account }}</h5>
+			<h1>Referrals</h1>
+			<h5>Your Referral Link:</h5>
+			<h6 style="zoom: .8">{{ location.origin }}/?ref={{ tron.account }}</h6>
 			<button class="copytext" @click="copyText(location.origin + '/?ref=' + tron.account)">COPY</button>
 			<h5 style="align: center">Referral bonus is automatically added to your dtron account when they invest.</h5>
 			<h5 style="align: center">Referral bonus is counted towards the total 300% ROI.</h5>
@@ -223,6 +226,6 @@
 </div>
 
 <script src="js/vue.js"></script>
-<script src="js/custom.js?q=31"></script>
+<script src="js/custom.js?q=2021"></script>
 </body>
 </html>
