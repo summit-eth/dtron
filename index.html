@@ -37,6 +37,7 @@
 		<img src="img/logo.png">
 	</div>
 
+	<!--div class="container" v-if="this.current_date < contract.starting_date"-->
 	<div class="container">
 		<div class="sub">
 			<h1 style="text-align: center">LAUNCHING ON</h1>
@@ -45,16 +46,128 @@
 			<button id="view_telegram" @click="window.open('https://t.me/dtronofficial')">OFFICIAL TELEGRAM GROUP &nbsp;&nbsp;[&#x2197;]</button>
 		</div>
 	</div>
+	
+	<div id="c_invest" class="container">
+		<div class="sub">
+			<h1>Dashboad</h1>
+            <h5>Your Wallet Address:</h5>
+            <h6>{{this.tron.account}}</h6>
+            <h5>Your Wallet Balance:</h5>
+            <h6>{{user.trx}} trx</h6>
+            <br>
+			<h5 v-if="user.upline != 'T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb'">Your Upline:</h5>
+            <h6 v-if="user.upline != 'T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb'">{{ user.upline }}</h6>
+            <br v-if="user.upline != 'T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb'">
+			<h5>Total Invested:</h5><h6 id="total_invest">{{ user.invested }} trx</h6>
+			<h5>Total Reinvested:</h5><h6 id="total_reinvest">{{ user.reinvested }} trx</h6>
+			<h5>Total Referrals:</h5><h6 id="total_refer">{{ user.referrals }} trx</h6>
+			<h5>Withdrawn Referrals:</h5><h6>{{ user.withdrawn_referrals }} trx</h6>
+			<h5>Withdrawn Income:</h5><h6>{{ user.withdrawn }} trx</h6>
+            <br>
+			<h5>Total Withdrawable:</h5>
+			<h6>{{ user.income }} trx</h6>
+			<h5>Last Withdraw: <span v-if="user.last_withdraw != 0">{{ countdown(new Date(user.last_withdraw * 1000)).toString() }}</span><span v-else>No Withdrawals Yet</span></h5>
+            
+			<button id="btn_withdraw" @click.prevent="withdraw(0)">WITHDRAW</button>
+            <h5 style="text-align: center">Please keep 5-10 trx for transaction fees</h5>
+            
+            <input type="number" min="10" placeholder="10 trx" value="10" id="trx_value" v-model.number="calc.amountri" @change="calc.amountri = calc.amountri < 10 ? 10 : calc.amountri">
+            <button id="btn_reinvest" @click.prevent="withdraw(calc.amountri)">WITHDRAW &amp; REINVEST</button>
+            <h5 style="text-align: center">Minimum of 10 trx for reinvestment (no platform deductions)</h5>
+		</div>
+	</div>
     
-    <!--div class="container">
+    <div class="container">
         <div class="sub">
-            <h6>Invest</h6>
+            <h1>Invest Now!</h1>
             <h5>50 trx minimum</h5>
+			<h6 v-if="upline != default_upline">Referred by</h6>
+			<h5 v-if="upline != default_upline && user.invested == 0">{{ upline }}</h5>
+			<h5 v-else>{{ user.upline }}</h5>
             <input type="number" min="50" placeholder="50 trx" value="50" id="trx_value" v-model.number="calc.amount" @change="calc.amount = calc.amount < 50 ? 50 : calc.amount">
             <button id="btn_invest" @click.prevent="deposit(calc.amount)">INVEST</button>
             <h5 style="text-align: center">Please keep 5-10 trx for transaction fees</h5>
         </div>
-    </div-->
+    </div>
+    
+    <div class="container">
+		<div class="sub">
+			<h1>Investment Data</h1>
+			<table>
+				<thead><th>Amount</th><th>Ends in</th><th>Withdrawable</th></thead>
+				<tr v-for="dep in user.investments" v-if="dep[1] != 0">
+					<td>{{ tronWeb.fromSun(dep[0]) }} trx</td><td>{{ countdown(new Date(new Date().getTime() + (dep[1] * 1000))).toString() }}</td><td>{{ tronWeb.fromSun(dep[2]) }} trx</td>
+				</tr>
+			</table>
+		</div>
+    </div>
+    
+	<div class="container">
+		<div class="sub">
+			<h6 v-if="upline != default_upline">Referred by</h6>
+			<h5 v-if="upline != default_upline && user.invested == 0">{{ upline }}</h5>
+			<h5 v-else>{{ user.upline }}</h5>
+			<br>
+			<h6>Your Referral Link</h6>
+			<h5>{{ location.origin }}/?ref={{ tron.account }}</h5>
+			<button class="copytext" @click="copyText(location.origin + '/?ref=' + tron.account)">COPY</button>
+			<h5 style="align: center">Referral bonus is automatically added to your dtron account when they invest.</h5>
+			<h5 style="align: center">Referral bonus is counted towards the total 300% ROI.</h5>
+            <br>
+			<table>
+				<thead><th>Level</th><th>Referral Bonus</th><th>Referrals</th></thead>
+				<tr><td>1</td><td>10%</td><td id="ref_lv1">{{ user.downlines[0] }}</td></tr>
+				<tr><td>2</td><td>5%</td><td id="ref_lv2">{{ user.downlines[1] }}</td></tr>
+				<tr><td>3</td><td>3%</td><td id="ref_lv3">{{ user.downlines[2] }}</td></tr>
+				<tr><td>4</td><td>3%</td><td id="ref_lv4">{{ user.downlines[3] }}</td></tr>
+				<tr><td>5</td><td>3%</td><td id="ref_lv5">{{ user.downlines[4] }}</td></tr>
+				<tr><td>6</td><td>3%</td><td id="ref_lv6">{{ user.downlines[5] }}</td></tr>
+				<tr><td>7</td><td>2%</td><td id="ref_lv7">{{ user.downlines[6] }}</td></tr>
+				<tr><td>8</td><td>2%</td><td id="ref_lv8">{{ user.downlines[7] }}</td></tr>
+				<tr><td>9</td><td>1%</td><td id="ref_lv9">{{ user.downlines[8] }}</td></tr>
+				<tr><td>10</td><td>1%</td><td id="ref_lv10">{{ user.downlines[9] }}</td></tr>
+				<tr><td>11</td><td>1%</td><td id="ref_lv11">{{ user.downlines[10] }}</td></tr>
+				<tr><td>12</td><td>1%</td><td id="ref_lv12">{{ user.downlines[11] }}</td></tr>
+			</table>
+		</div>
+	</div>
+    
+    <div class="container">
+        <div class="sub">
+            <h1>Top Globals</h1>
+            <h5>Top Globals will <u>each</u> receive 0.5% of the contract balance daily.</h5>
+            <br>
+            <h5>Top investors are those who invests the most.</h5>
+            <h6>#1 Investor</h6>
+            <h5>{{contract.top1investor}}<!-- - {{contract.top1investoramt}} TRX--></h5>
+            <h6>#2 Investor</h6>
+            <h5>{{contract.top2investor}}<!-- - {{contract.top2investoramt}} TRX--></h5>
+            <h6>#3 Investor</h6>
+            <h5>{{contract.top3investor}}<!-- - {{contract.top3investoramt}} TRX--></h5>
+            <br>
+            <h5>Top referrals are those who earn the most of their referrals/downlines.</h5>
+            <h6>#1 Referral</h6>
+            <h5>{{contract.top1referral}}<!-- - {{contract.top1referralamt}} TRX--></h5>
+            <h6>#2 Referral</h6>
+            <h5>{{contract.top2referral}}<!-- - {{contract.top2referralamt}} TRX--></h5>
+            <h6>#3 Referral</h6>
+            <h5>{{contract.top3referral}}<!-- - {{contract.top3referralamt}} TRX--></h5>
+            <br>
+            <h5>Top reinvestor is the one who reinvests the most.</h5>
+            <h6>#1 Reinvestor</h6>
+            <h5>{{contract.topreinvestor}}<!-- - {{contract.topreinvestoramt}} TRX--></h5>
+        </div>
+    </div>
+    
+	<div class="container">
+		<div class="sub">
+			<h1>Contract Info</h1>
+			<h5>Global Invested:</h5><h6 id="total_invest">{{ contract.invested }} trx</h6>
+			<h5>Global Reinvested:</h5><h6 id="total_reinvest">{{ contract.reinvested }} trx</h6>
+			<h5>Global Referrals:</h5><h6 id="total_refer">{{ contract.referrals }} trx</h6>
+			<h5>Insurance Balance:</h5><h6 id="total_refer">{{ contract.insurance }} trx</h6>
+        </div>
+    </div>
 	
 	<div id="c_data" class="container">
 		<div class="sub">
@@ -96,22 +209,10 @@
 
 	<div class="container">
 		<div class="sub">
-			<h6>Get your teams ready!</h6>
-			<h5>The DTRON Team is working 24/7 in refining the new dApp platform.</h5>
-			<br v-if="upline != default_upline">
-			<h6 v-if="upline != default_upline">Referred by</h6>
-			<h5 v-if="upline != default_upline">{{ upline }}</h5>
-			<br>
-			<h6>Your Referral Link</h6>
-			<h5>{{ location.origin }}/?ref={{ tron.account }}</h5>
-			<button class="copytext" @click="copyText(location.origin + '/?ref=' + tron.account)">COPY</button>
-		</div>
-	</div>
-
-	<div class="container">
-		<div class="sub">
 			<h6>More Information:</h6>
+			<button id="view_telegram" @click="window.open('https://tronscan.org/#/contract/TLsG6PzMAx9cJ4qm6MPibZPkrnaFooWBQ7/code')">VERIFIED SMART CONTRACT &nbsp;&nbsp;[&#x2197;]</button>
 			<button id="view_telegram" @click="window.open('https://t.me/dtronofficial')">OFFICIAL TELEGRAM GROUP &nbsp;&nbsp;[&#x2197;]</button>
+			<button id="view_insurance" @click="window.open('https://dtron.cc/insurance.html')">CLAIM INSURANCE (FEB 8) &nbsp;&nbsp;[&#x2197;]</button>
 		</div>
 	</div>
 
