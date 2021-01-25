@@ -36,16 +36,6 @@
 	<div id="c_hero" class="container" style="background: none !important; border: none !important">
 		<img src="img/logo.png">
 	</div>
-
-	<div class="container">
-		<div class="sub">
-			<h5 style="text-align: center">LAUNCHING ON</h5>
-			<h5 style="text-align: center">JANUARY 25 @ 12 PM UTC</h5>
-			<h6 style="text-align: center">{{ countdown(new Date(1611576000000)).toString() }}</h6>
-			<button id="view_telegram" @click="window.open('https://t.me/dtronofficial')">OFFICIAL TELEGRAM GROUP &nbsp;&nbsp;[&#x2197;]</button>
-			<button @click="top.location.href='#contract_info'">CONTRACT INFO</button>
-		</div>
-	</div>
 	
 	<div class="container">
 		<div class="sub" style="text-align: center">
@@ -219,6 +209,10 @@
 			<button @click="window.open('https://tronscan.org/#/contract/THUQskTHh8hUGTX9a8iFSMbLPZxPnJNJ1k/code')">VERIFIED SMART CONTRACT &nbsp;&nbsp;[&#x2197;]</button>
 			<button id="view_telegram" @click="window.open('https://t.me/dtronofficial')">OFFICIAL TELEGRAM GROUP &nbsp;&nbsp;[&#x2197;]</button>
 			<button id="view_insurance" @click="window.open('https://dtron.cc/insurance.html')">CLAIM INSURANCE (FEB 8) &nbsp;&nbsp;[&#x2197;]</button>
+            <br>
+            <br>
+            <br>
+            <h5 style="text-align: center">Contract running for {{ countdown(new Date(1611576000000)).toString() }}</h5>
 		</div>
 	</div>
 
