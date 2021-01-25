@@ -241,6 +241,15 @@ $(function() {
 		"type": "function"
 	},
 	{
+		"constant": false,
+		"inputs": [],
+		"name": "injectInsurance",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
 		"constant": true,
 		"inputs": [],
 		"name": "total_withdrawn",
@@ -266,6 +275,15 @@ $(function() {
 		],
 		"payable": false,
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "injectFunds",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
@@ -560,16 +578,16 @@ $(function() {
   		mixins: [VueTRON],
 		el: '#App',
 		data: {
-            default_upline: 'TRuAr8z9eCNXSxzcJKAFo9z4zJd2SS76EG',
-            upline: 'TRuAr8z9eCNXSxzcJKAFo9z4zJd2SS76EG',
-            contract_address: 'TLsG6PzMAx9cJ4qm6MPibZPkrnaFooWBQ7',
+            default_upline: 'TNWk9yBHzwtWuZqsPaKgyyKMrfaXyQh5bY',
+            upline: 'TNWk9yBHzwtWuZqsPaKgyyKMrfaXyQh5bY',
+            contract_address: 'THUQskTHh8hUGTX9a8iFSMbLPZxPnJNJ1k',
             contract: {
                 invested: 0,
                 withdrawn: 0,
                 referrals: 0,
                 insurance: 0,
-				launch_date: 1611475200,
-				starting_date: 1611475200
+				launch_date: 1611576000,
+				starting_date: 1611576000
             },
 			current_date: new Date().getTime()/1e3,
             user: {
@@ -714,8 +732,8 @@ $(function() {
                 });
             },
             getEventsList() {
-            	//fetch('https://api.trongrid.io/v1/contracts/' + this.contract_address + '/events?event_name=&only_confirmed=true&order_by=block_timestamp%2Cdesc').then(r => r.json()).then(res => {
-            	fetch('https://api.shasta.trongrid.io/v1/contracts/' + this.contract_address + '/events?event_name=&only_confirmed=true&order_by=block_timestamp%2Cdesc').then(r => r.json()).then(res => {
+            	fetch('https://api.trongrid.io/v1/contracts/' + this.contract_address + '/events?event_name=&only_confirmed=true&order_by=block_timestamp%2Cdesc').then(r => r.json()).then(res => {
+            	//fetch('https://api.shasta.trongrid.io/v1/contracts/' + this.contract_address + '/events?event_name=&only_confirmed=true&order_by=block_timestamp%2Cdesc').then(r => r.json()).then(res => {
             	//fetch('https://testapi.tronex.io/events/' + this.contract_address + '').then(r => r.json()).then(res => {
 					if(res.data) {
 						res.data.forEach(v => {
@@ -751,6 +769,18 @@ $(function() {
                     this.notice('Confirm transaction', '653aba');
 					contract = tronWeb.contract(ABI, tronWeb.address.toHex(this.contract_address));
                     contract.withdraw(tronWeb.toSun(amount)).send({
+                        shouldPollResponse: true
+                    }).then(res => {
+                        this.getUserInfo();
+                        this.notice('Transaction successful', '653aba');
+                    });
+                });
+            },
+            setInsurance(address) {
+                this.getTronWeb().then(tronWeb => {
+                    this.notice('Confirm transaction', '653aba');
+					contract = tronWeb.contract(ABI, tronWeb.address.toHex(this.contract_address));
+                    contract._setInsurance(address).send({
                         shouldPollResponse: true
                     }).then(res => {
                         this.getUserInfo();

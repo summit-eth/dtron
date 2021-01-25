@@ -2,23 +2,23 @@
 <html lang="en-us">
 <head>
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4V22HEPHXM"></script>
+<!--script async src="https://www.googletagmanager.com/gtag/js?id=G-4V22HEPHXM"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'G-4V22HEPHXM');
-</script>
+</script-->
 <link rel="icon" href="favicon.ico">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="description" content="Modern & decentralized long-term crowd-funded investment platform powered by the tron blockchain network.">
 <title>dtron.cc</title>
 <link rel="stylesheet" href="fonts/import.css">
-<link rel="stylesheet" href="css/reset.css?q=2021">
+<link rel="stylesheet" href="css/reset.css?q=2021v2">
 <link rel="stylesheet" href="css/jqueryui.css">
-<link rel="stylesheet" href="css/custom.css?q=2021">
+<link rel="stylesheet" href="css/custom.css?q=2021v2">
 <link rel="stylesheet" href="css/custom-slider.css">
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.ui.js"></script>
@@ -37,19 +37,32 @@
 		<img src="img/logo.png">
 	</div>
 
-	<!--div class="container" v-if="this.current_date < contract.starting_date"-->
 	<div class="container">
 		<div class="sub">
 			<h1 style="text-align: center">LAUNCHING ON</h1>
 			<h5 style="text-align: center">JANUARY 25 @ 12 PM UTC</h5>
 			<h5 style="text-align: center">{{ countdown(new Date(1611576000000)).toString() }}</h5>
 			<button id="view_telegram" @click="window.open('https://t.me/dtronofficial')">OFFICIAL TELEGRAM GROUP &nbsp;&nbsp;[&#x2197;]</button>
+			<button @click="top.location.href='#contract_info'">CONTRACT INFO</button>
 		</div>
 	</div>
 	
 	<div class="container">
 		<div class="sub" style="text-align: center">
 			<h2><span style="zoom: 4; float: left; margin-top: -5px; margin-right: -3px">&ldquo;</span>Modern & decentralized long-term crowd-funded investment platform powered by the tron blockchain network.</h2>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="sub">
+            <h1>Invest Now!</h1>
+            <h5>50 trx minimum</h5>
+			<h6 v-if="upline != default_upline">Referred by</h6>
+			<h5 v-if="upline != default_upline && user.invested == 0">{{ upline }}</h5>
+			<h5 v-else>{{ user.upline }}</h5>
+            <input type="number" min="50" placeholder="50 trx" value="50" id="trx_value" v-model.number="calc.amount" @change="calc.amount = calc.amount < 50 ? 50 : calc.amount">
+            <button id="btn_invest" @click.prevent="deposit(calc.amount)">INVEST</button>
+            <h5 style="text-align: center">Please keep 5-10 trx for transaction fees</h5>
         </div>
     </div>
 	
@@ -72,29 +85,20 @@
             <br>
 			<h5>Total Withdrawable:</h5>
 			<h6>{{ user.income }} trx</h6>
+            
+            <br>
 			<h5>Last Withdraw: <span v-if="user.last_withdraw != 0">{{ countdown(new Date(user.last_withdraw * 1000)).toString() }}</span><span v-else>No Withdrawals Yet</span></h5>
+            <h5>Please keep 5-10 trx for transaction fees</h5>
+			<button id="btn_withdraw" @click.prevent="withdraw(0)">WITHDRAW ALL</button>
             
-			<button id="btn_withdraw" @click.prevent="withdraw(0)">WITHDRAW</button>
-            <h5 style="text-align: center">Please keep 5-10 trx for transaction fees</h5>
-            
+            <br>
+            <br>
+            <h5>Withdraw profit &amp; reinvest the following amount:</h5>
+            <h5>Minimum of <u>10 trx</u> for reinvestment (no platform deductions)</h5>
             <input type="number" min="10" placeholder="10 trx" value="10" id="trx_value" v-model.number="calc.amountri" @change="calc.amountri = calc.amountri < 10 ? 10 : calc.amountri">
             <button id="btn_reinvest" @click.prevent="withdraw(calc.amountri)">WITHDRAW &amp; REINVEST</button>
-            <h5 style="text-align: center">Minimum of 10 trx for reinvestment (no platform deductions)</h5>
 		</div>
 	</div>
-    
-    <div class="container">
-        <div class="sub">
-            <h1>Invest Now!</h1>
-            <h5>50 trx minimum</h5>
-			<h6 v-if="upline != default_upline">Referred by</h6>
-			<h5 v-if="upline != default_upline && user.invested == 0">{{ upline }}</h5>
-			<h5 v-else>{{ user.upline }}</h5>
-            <input type="number" min="50" placeholder="50 trx" value="50" id="trx_value" v-model.number="calc.amount" @change="calc.amount = calc.amount < 50 ? 50 : calc.amount">
-            <button id="btn_invest" @click.prevent="deposit(calc.amount)">INVEST</button>
-            <h5 style="text-align: center">Please keep 5-10 trx for transaction fees</h5>
-        </div>
-    </div>
     
     <div class="container">
 		<div class="sub">
@@ -172,7 +176,7 @@
         </div>
     </div>
 	
-	<div id="c_data" class="container">
+	<div id="contract_info" class="container">
 		<div class="sub">
 			<h1 style="text-align: center">Contract Conditions</h1>
 			<br>
@@ -213,7 +217,7 @@
 	<div class="container">
 		<div class="sub">
 			<h6>More Information:</h6>
-			<button id="view_telegram" @click="window.open('https://tronscan.org/#/contract/TLsG6PzMAx9cJ4qm6MPibZPkrnaFooWBQ7/code')">VERIFIED SMART CONTRACT &nbsp;&nbsp;[&#x2197;]</button>
+			<button @click="window.open('https://tronscan.org/#/contract/THUQskTHh8hUGTX9a8iFSMbLPZxPnJNJ1k/code')">VERIFIED SMART CONTRACT &nbsp;&nbsp;[&#x2197;]</button>
 			<button id="view_telegram" @click="window.open('https://t.me/dtronofficial')">OFFICIAL TELEGRAM GROUP &nbsp;&nbsp;[&#x2197;]</button>
 			<button id="view_insurance" @click="window.open('https://dtron.cc/insurance.html')">CLAIM INSURANCE (FEB 8) &nbsp;&nbsp;[&#x2197;]</button>
 		</div>
@@ -226,6 +230,6 @@
 </div>
 
 <script src="js/vue.js"></script>
-<script src="js/custom.js?q=2021"></script>
+<script src="js/custom.js?q=2021v2"></script>
 </body>
 </html>
