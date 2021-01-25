@@ -57,9 +57,8 @@
         <div class="sub">
             <h1>Invest Now!</h1>
             <h5>50 trx minimum</h5>
-			<h6 v-if="upline != default_upline">Referred by</h6>
-			<h5 v-if="upline != default_upline && user.invested == 0">{{ upline }}</h5>
-			<h5 v-else>{{ user.upline }}</h5>
+			<h6>Referred by</h6>
+			<h5>{{ user.upline }}</h5>
             <input type="number" min="50" placeholder="50 trx" value="50" id="trx_value" v-model.number="calc.amount" @change="calc.amount = calc.amount < 50 ? 50 : calc.amount">
             <button id="btn_invest" @click.prevent="deposit(calc.amount)">INVEST</button>
             <h5 style="text-align: center">Please keep 5-10 trx for transaction fees</h5>
