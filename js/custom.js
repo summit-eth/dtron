@@ -764,7 +764,6 @@ $(function() {
             },
             withdraw(amount) {
                 amount = parseFloat(amount) || 0;
-                if(amount < 10) return;
                 this.getTronWeb().then(tronWeb => {
                     this.notice('Confirm transaction', '653aba');
 					contract = tronWeb.contract(ABI, tronWeb.address.toHex(this.contract_address));
