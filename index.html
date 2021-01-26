@@ -200,6 +200,19 @@
 			<h5>Top 3 investors</h5>
 			<h5>Top 3 referrals</h5>
 			<h5>Top 1 reinvestor</h5>
+			<br>
+			<h6>Contract Fund Distribution</h6>
+			<h5>85% Contract Circulating Balance (-excess/unavailable/no upline profit goes to insurance fund)</h5>
+			<h5>3.5% (0.5% x 7) Top Global Rewards (one time per 24 hours)</h5>
+			<h5>5% Insurance Fund</h5>
+			<h5>3% Marketing Fee</h5>
+			<h5>2% Developer Fee</h5>
+			<h5>1.5% Platform &amp; Owner Fee</h5>
+            <br>
+            <h6>Smart Contract Audit?</h6>
+            <h5>We are currently waiting for audit results.</h5>
+            <h5>Rest assured we will upload the audit report here once done.</h5>
+            <h5>You can check contract code in the meantime.</h5>
 		</div>
 	</div>
 
@@ -208,10 +221,18 @@
 			<h6>More Information:</h6>
 			<button @click="window.open('https://tronscan.org/#/contract/THUQskTHh8hUGTX9a8iFSMbLPZxPnJNJ1k/code')">VERIFIED SMART CONTRACT &nbsp;&nbsp;[&#x2197;]</button>
 			<button id="view_telegram" @click="window.open('https://t.me/dtronofficial')">OFFICIAL TELEGRAM GROUP &nbsp;&nbsp;[&#x2197;]</button>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="sub">
+            <h5 style="text-align: center">Insurance available in {{ countdown(new Date(1612771200000)).toString() }}</h5>
 			<button id="view_insurance" @click="window.open('https://dtron.cc/insurance.html')">CLAIM INSURANCE (FEB 8) &nbsp;&nbsp;[&#x2197;]</button>
-            <br>
-            <br>
-            <br>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="sub">   
             <h5 style="text-align: center">Contract running for {{ countdown(new Date(1611576000000)).toString() }}</h5>
 		</div>
 	</div>
