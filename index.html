@@ -47,6 +47,7 @@
         <div class="sub">
             <h1>Invest Now!</h1>
             <h5>50 trx minimum</h5>
+            <h5>300% in 900 Days, <u>0.33% DAILY</u></h5>
 			<h6>Referred by</h6>
 			<h5>{{ user.upline }}</h5>
             <input type="number" min="50" placeholder="50 trx" value="50" id="trx_value" v-model.number="calc.amount" @change="calc.amount = calc.amount < 50 ? 50 : calc.amount">
@@ -172,10 +173,10 @@
 			<h6>The Total ROI</h6>
 			<h5>Users will be able to get 300%(<u>deposit included</u>) of their total investment.</h5>
 			<br>
-			<h5>The contract will provide users 10% of their total investment every day for 30 days or when the total <u>300% profit is reached</u>, whichever comes first.</h5>
+			<h5>The contract will provide users <u>0.33% their total investment daily</u>, <u>300% for 900</u> days or when the total <u>300% profit is reached</u>, whichever comes first.</h5>
 			<br>
 			<h6>How?</h6>
-			<h5>Users can get the 300% by waiting for the 10% Daily ROI(return of investment) or by referral commissions.</h5>
+			<h5>Users can get the 300% by waiting for the Daily ROI(return of investment) or by referral commissions.</h5>
 			<br>
 			<h6>Referral Commissions</h6>
 			<h5>Referral commissions are 12 levels deep:</h5>
